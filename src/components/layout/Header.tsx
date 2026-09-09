@@ -11,8 +11,10 @@ import {
   Sparkles,
   Shield,
   Search,
+  QrCode,
 } from 'lucide-react';
 import { Button } from '../common/Button';
+import { QrModal } from '../common/QrModal';
 
 interface HeaderProps {
   onOpenMobileMenu: () => void;
@@ -32,6 +34,7 @@ export const Header: React.FC<HeaderProps> = ({ onOpenMobileMenu }) => {
 
   const [showNotifications, setShowNotifications] = useState(false);
   const [showTripMenu, setShowTripMenu] = useState(false);
+  const [showQrModal, setShowQrModal] = useState(false);
 
   const isDisrupted = activeTrip?.status === 'DISRUPTED';
   const isRecovered = activeTrip?.status === 'RECOVERED';
@@ -160,6 +163,17 @@ export const Header: React.FC<HeaderProps> = ({ onOpenMobileMenu }) => {
             Simulate Disruption
           </Button>
 
+          {/* Live Mobile QR Code Trigger */}
+          <button
+            onClick={() => setShowQrModal(true)}
+            className="flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-cyan-500/10 hover:bg-cyan-500/20 border border-cyan-500/30 text-cyan-300 text-xs font-bold transition-all hover:scale-105 shadow-sm shadow-cyan-500/10 cursor-pointer"
+            title="Scan Live Mobile Demo QR Code"
+            aria-label="Scan Live Mobile QR Code"
+          >
+            <QrCode className="w-4 h-4 text-cyan-400 shrink-0" />
+            <span className="hidden md:inline">Mobile QR</span>
+          </button>
+
           {/* Notifications Popover Toggle */}
           <div className="relative">
             <button
@@ -221,6 +235,9 @@ export const Header: React.FC<HeaderProps> = ({ onOpenMobileMenu }) => {
           </div>
         </div>
       </div>
+
+      {/* QR Code Presentation Modal */}
+      <QrModal isOpen={showQrModal} onClose={() => setShowQrModal(false)} />
     </header>
   );
 };
