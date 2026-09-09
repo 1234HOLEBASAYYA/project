@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" fill="none">
+  <defs>
+    <linearGradient id="planeGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stopColor="#06B6D4" />
+      <stop offset="100%" stopColor="#3B82F6" />
+    </linearGradient>
+  </defs>
+  <rect width="48" height="48" rx="12" fill="#0F172A" />
+  <circle cx="24" cy="24" r="18" stroke="url(#planeGrad)" stroke-width="2" stroke-dasharray="4 3" opacity="0.6" />
+  <path d="M24 10L36 34L24 28L12 34L24 10Z" fill="url(#planeGrad)" />
+</svg>
